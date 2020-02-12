@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/user_map.css">
     <title>qAIRa Map</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
         <nav class="transparent" style="padding: 0px 10px">
             <div class="nav-wrapper">
               <a href="#" class="brand-logo center">
-                <img id="logo-navbar" src="img/logo-light.png" alt="logo qAIRa" class="responsive-img">
+                <img id="logo-navbar" src="../img/logo-light.png" alt="logo qAIRa" class="responsive-img">
               </a>
               <a href="#" id="menu-trigger" class="sidenav-trigger" data-target="mobile-nav">
                   <i class="material-icons">menu</i>
@@ -57,9 +57,13 @@
           </div>
     </div>
 
-    <h3 class="white-text center">Know your air, become the change</h3>
+    <!-- Map -->
+    <div id="map">
 
+    </div>
+
+    <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="../js/user_map.js"></script>
 </body>
 </html>

@@ -15,6 +15,8 @@
   "bugs": {
     "url": "https://github.com/SabCampos/qAIRaMap/issues"
   },
-  "homepage": "https://github.com/SabCampos/qAIRaMap#readme"
-
+  "homepage": "https://github.com/SabCampos/qAIRaMap#readme",
+  "dependencies": {
+    "socket.io-client": "^2.3.0"
+  }
 }

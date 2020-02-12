@@ -1,21 +1,24 @@
 :root{
     --blue:rgba(60, 165, 203);
     --blue-alpha:rgba(60, 165, 203,.5);
+    --white-alpha:rgb(255, 255, 255, .5);
 }
 body {
-    height: 100vh;
-    overflow: hidden;
     background-image: url("../img/Brand\ Book\ qAIRa-16.svg");
     background-size: cover;
 }
 
-#logo-navbar {
-    max-width: 45%;
+form{
+max-height: 25em;
+}
+
+.row{
+    margin-bottom: 0;
 }
 
 
 .card {
     margin-top: 2em;
-    background-color: var(--blue-alpha);
+    background-color: var(--white-alpha);
 }
 
