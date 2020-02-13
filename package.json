@@ -4,7 +4,8 @@
   "description": "Real-time website for monitoring air quality",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server -p"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/SabCampos/qAIRaMap#readme",
   "dependencies": {
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
