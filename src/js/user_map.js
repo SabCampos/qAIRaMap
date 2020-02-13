@@ -1,5 +1,3 @@
-require('socket.io-client');
-
 window.onload = () => {
 
     document.getElementById('loader').classList.add('hide');
@@ -12,7 +10,7 @@ window.onload = () => {
 const socket = io.connect('http://54.159.70.183/');
 
   socket.on('new_data_summary', (data) => {
-    // console.log(data);
+    console.log(data);
     
 });
 
