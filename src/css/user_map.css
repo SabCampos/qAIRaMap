@@ -6,3 +6,7 @@ body {
 #map{
     height: 90vh;
 }
+#loader{
+    position: relative;
+    top: 20em;
+}

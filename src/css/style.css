@@ -3,6 +3,10 @@ body {
     background-size: cover;
 }
 
+#loader{
+    position: relative;
+    top: 20em;
+}
 
 
 

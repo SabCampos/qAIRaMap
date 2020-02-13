@@ -7,6 +7,10 @@ body {
     background-image: url("../img/Brand\ Book\ qAIRa-16.svg");
     background-size: cover;
 }
+#loader{
+    position: relative;
+    top: 20em;
+}
 
 form{
 max-height: 25em;
