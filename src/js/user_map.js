@@ -1,4 +1,4 @@
-
+require('socket.io-client');
 
 window.onload = () => {
 
