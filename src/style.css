@@ -1,0 +1,55 @@
+:root{
+    --blue:rgba(60, 165, 203);
+    --blue-alpha:rgba(60, 165, 203,.5);
+    --white-alpha:rgb(255, 255, 255, .7);
+}
+
+body {
+    background-image: url("../src/img/Brand\ Book\ qAIRa-16.svg");
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+  }
+
+#loader{
+    position: relative;
+    top: 20em;
+}
+.page-footer{
+    padding: 0;
+    background-color: rgba(60, 165, 203);
+}
+
+.login{
+    background-color: var(--white-alpha);
+    border-radius: 15px;
+    margin-top: 5em;
+}
+
+.white-text{
+    margin-top: 1.5em;
+}
+
+
+
+.chip {
+    margin: auto;
+    height: max-content;
+    width: inherit;
+    text-align: center;
+    font-size: x-large;
+}
+
+#map{
+    height: 88vh;
+}
+
+.qairito-img{
+    height: 60px;
+    right: 0;
+}
