@@ -10,4 +10,13 @@ module.exports={
     },
     
     target: 'node', 
+    // devServer: {
+    //       contentBase: './home/sabrina/qaira/qAIRaMap/',
+    //      },
+
+    // devServer: {
+    //     contentBase: '/home/sabrina/qaira/qAIRaMap/src',
+    //     compress: true,
+    //     port: 8080
+    //   }
 }

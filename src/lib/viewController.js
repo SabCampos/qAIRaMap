@@ -16,8 +16,6 @@ const userID = (callback)=>{
 
 export const changeView = (router) => {
     container.innerHTML='';  
-    console.log(company_id, typeof company_id);
-    
     switch (router) {
       case '':
       {

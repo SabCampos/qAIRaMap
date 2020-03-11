@@ -21,8 +21,8 @@ const  viewQairaMap = (company) => {
 
     const logoutNavMenu = document.querySelector('#logout-nav-menu');
     const dashboardNavMenu = document.querySelector('#dashboard-nav-menu');
-    const logoutMobileMenu = document.querySelector('#logout-mobile-menu');
-    const dashboardMobileMenu = document.querySelector('#dashboard-mobile-menu');
+    // const logoutMobileMenu = document.querySelector('#logout-mobile-menu');
+    // const dashboardMobileMenu = document.querySelector('#dashboard-mobile-menu');
 
     const logoutBtn = document.createElement('a');
     const dashboardBtn = document.createElement('a');
@@ -36,7 +36,7 @@ const  viewQairaMap = (company) => {
 
     logoutBtn.addEventListener('click', () => {
       sessionStorage.clear();
-      logoutNavMenu. removeChild(logoutBtn);
+      logoutNavMenu.removeChild(logoutBtn);
       window.location.hash = ``;
     })
 
@@ -59,7 +59,7 @@ const  viewQairaMap = (company) => {
           });
 
       map.markers = [];     
-          fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
+      fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
           .then(res =>res.json())
           .then(qhawax_list => {
             qhawax_list.forEach(qhawax => {
@@ -69,7 +69,7 @@ const  viewQairaMap = (company) => {
 
           window.addEventListener('hashchange', () => {
             sessionStorage.clear();
-            logoutNavMenu. removeChild(logoutBtn);
+            logoutNavMenu.removeChild(logoutBtn);
             dashboardBtn.removeChild(dashboardBtn);
           });
    return mapElem;

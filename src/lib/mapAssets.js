@@ -452,6 +452,7 @@ let content = 'Cargando...';
                       <th align="justify"></th>
                       <th align="justify">${window.innerWidth>768?'Ruido ':'Ruido '}(dB)</th>
                       <th align="justify">${window.innerWidth>768?'Temperatura ':'T '}(°C)</th>
+                      <th align="justify">${window.innerWidth>768?'Ultra Violeta ':'UV '}</th>
                       <th align="justify">${window.innerWidth>768?'Presión ':'P '}(kPa)</th>
                       <th align="justify">${window.innerWidth>768?'Humedad ':'H '} (%)</th>
                   </tr>
@@ -461,6 +462,7 @@ let content = 'Cargando...';
                       <td><strong>Tiempo<br> Real</strong></td>
                       <td bgcolor="${zoneColor.color}">${values.spl}</td>
                       <td>${values.temperature}</td>
+                      <td>${values.UV}</td>
                       <td>${values.pressure}</td>
                       <td>${values.humidity}</td>
                   </tr>
