@@ -1,7 +1,7 @@
-
 module.exports={
     entry:{
         index:'./src/index.js',
+        service_worker:'./src/service_worker.js'
 
     },
     output:{
@@ -10,10 +10,20 @@ module.exports={
     },
     
     target: 'node', 
-    // devServer: {
-    //       contentBase: './home/sabrina/qaira/qAIRaMap/',
-    //      },
+    devServer: {
+          contentBase: '/home/sabrina/qaira/qAIRaMap/build',
+         },
 
+         
+    //  plugins: [
+    //         new HtmlWebpackPlugin({
+    //             filename: 'index.html',
+    //             template: 'src/index.html',
+    //           }),
+    //         ],
+
+    
+          
     // devServer: {
     //     contentBase: '/home/sabrina/qaira/qAIRaMap/src',
     //     compress: true,

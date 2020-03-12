@@ -32,10 +32,7 @@ const  viewFreeMap = (company) => {
 
     const modalsGraph= mapElem.querySelectorAll('.modal');
     M.Modal.init(modalsGraph);
-
-    const modalClose = mapElem.querySelector('#close');
-    modalClose.href=window.location.hash;
-
+    
 
     const map = new google.maps.Map(mapElem.querySelector('#map'), {
             center: mapCenter(company),

@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
     window.onload = () => {
 
         navigator.serviceWorker
-        .register('service_worker.js')
+        .register('service_worker.bundle.js')
         .then(()=> console.log('Service Worker: Registered'))
         .catch(err => console.log(`Service Worker: Error: ${err}`))
 

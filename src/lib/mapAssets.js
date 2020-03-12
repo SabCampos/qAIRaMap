@@ -171,7 +171,10 @@ const airQuality = (data) => {
   
     // const time = moment(data.timestamp).utc().format('LT')
 
-    const time = data.time;
+    const newDate = new Date(data.timestamp)
+    
+    const time = newDate.getHours()+':'+newDate.getMinutes()
+ 
   
   
     const qPM10 = (PM10 >= 0 && PM10 <= 50) ? {color:'green', label:'Buena'}
@@ -238,34 +241,34 @@ const airQuality = (data) => {
 const generateGif = (qhawax,company) =>{
     if (company===3) {
        if(qhawax.main_inca >=0 && qhawax.main_inca <= 50) {
-        return '../src/img/gecko/gecko - buena.png'
+        return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/gecko/gecko%20-%20buena.png?raw=true'
       } else if (qhawax.main_inca <= 100) {
-        return '../src/img/gecko/gecko - moderada.png'
+        return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/gecko/gecko%20-%20moderada.png?raw=true'
       } else if (qhawax.main_inca <= 500) { 
-        return '../src/img/gecko/gecko - mala.png'
+        return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/gecko/gecko%20-%20mala.png?raw=true'
       } else {
-        return '../src/img/gecko/gecko - cuidado.png'
+        return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/gecko/gecko%20-%20cuidado.png?raw=true'
       }
     } else {
         if(qhawax.main_inca>=0 && qhawax.main_inca<= 50) {
-            return '../src/img/qairito/qairito_buena.gif'
+            return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/qairito/qairito_buena.gif?raw=true'
           } else if (qhawax.main_inca<= 100) {
-            return '../src/img/qairito/qairito_moderada.gif'
+            return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/qairito/qairito_moderada.gif?raw=true'
           } else if (qhawax.main_inca<= 500) {
-            return '../src/img/qairito/qairito_mala.gif'
+            return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/qairito/qairito_mala.gif?raw=true'
           } else {
-            return '../src/img/qairito/qairito_cuidado.gif'
+            return 'https://github.com/qAIRa/qAIRaMap/blob/master/src/img/qairito/qairito_cuidado.gif?raw=true'
           }
     }
   }
 
 const  qhawaxLeaf = (inca) => {
     let leaf = '';
-        typeof inca === null ? leaf='../src/img/leafs/out_of_service.png':
-        (inca>=0 && inca <=50) ? leaf='../src/img/leafs/leaf_inca_good.png':
-        (inca <=100) ? leaf='../src/img/leafs/leaf_inca_moderate.png':
-        (inca <=500) ? leaf='../src/img/leafs/leaf_inca_bad.png':
-        leaf='../src/img/leafs/leaf_inca_hazardous.png';
+        typeof inca === null ? leaf='https://github.com/qAIRa/qAIRaMap/blob/master/src/img/leafs/leaf_out_of_service.png?raw=true':
+        (inca>=0 && inca <=50) ? leaf='https://github.com/qAIRa/qAIRaMap/blob/master/src/img/leafs/leaf_inca_good.png?raw=true':
+        (inca <=100) ? leaf='https://github.com/qAIRa/qAIRaMap/blob/master/src/img/leafs/leaf_inca_moderate.png?raw=true':
+        (inca <=500) ? leaf='https://github.com/qAIRa/qAIRaMap/blob/master/src/img/leafs/leaf_inca_bad.png?raw=true':
+        leaf='https://github.com/qAIRa/qAIRaMap/blob/master/src/img/leafs/leaf_inca_hazardous.png?raw=true';
 
   return leaf;
 };
@@ -399,8 +402,19 @@ let content = 'Cargando...';
 
              const values = indexValue(res);
              const zoneColor = zoneColorNoise(res);
-             const qhawax_sensor_color = airQuality(values);
-   
+
+
+             fetch('https://qairamapnapi.qairadrones.com/api/last_gas_inca_data/')
+             .then(res =>res.json())
+             .then(qhawax_inca_list => {
+       
+               qhawax_inca_list.forEach(qhawax_inca => {
+       
+                 if (Number(res.ID.toString().slice(-2)) === qhawax_inca.qhawax_id) {
+       
+                   const qhawax_sensor_color = airQuality(qhawax_inca);
+
+
              content=
              `
              <div class="infoWindow">
@@ -424,13 +438,13 @@ let content = 'Cargando...';
                     <tbody>
                     <tr>
                         <td ><strong>INCA</strong> <br>(promedio <br>${qhawax_sensor_color.time})</td>
-                        <td bgcolor="${qhawax_sensor_color.qCO.color}">${qhawax_sensor_color.qCO.label}<br>(${values.CO})</td>
-                        <td bgcolor="${qhawax_sensor_color.qNO2.color}">${qhawax_sensor_color.qNO2.label}<br>(${values.NO2})</td>
-                        <td bgcolor="${qhawax_sensor_color.qO3.color}">${qhawax_sensor_color.qO3.label}<br>(${values.O3})</td>
-                        <td bgcolor="${qhawax_sensor_color.qH2S.color}">${qhawax_sensor_color.qH2S.label}<br>(${values.H2S})</td>
-                        <td bgcolor="${qhawax_sensor_color.qSO2.color}">${qhawax_sensor_color.qSO2.label}<br>(${values.SO2})</td>
-                        <td bgcolor="${qhawax_sensor_color.qPM25.color}">${qhawax_sensor_color.qPM25.label}<br>(${values.PM25})</td>
-                        <td bgcolor="${qhawax_sensor_color.qPM10.color}">${qhawax_sensor_color.qPM10.label}<br>(${values.PM10})</td>
+                        <td bgcolor="${qhawax_sensor_color.qCO.color}">${qhawax_sensor_color.qCO.label}<br>(${qhawax_inca.CO})</td>
+                        <td bgcolor="${qhawax_sensor_color.qNO2.color}">${qhawax_sensor_color.qNO2.label}<br>(${qhawax_inca.NO2})</td>
+                        <td bgcolor="${qhawax_sensor_color.qO3.color}">${qhawax_sensor_color.qO3.label}<br>(${qhawax_inca.O3})</td>
+                        <td bgcolor="${qhawax_sensor_color.qH2S.color}">${qhawax_sensor_color.qH2S.label}<br>(${qhawax_inca.H2S})</td>
+                        <td bgcolor="${qhawax_sensor_color.qSO2.color}">${qhawax_sensor_color.qSO2.label}<br>(${qhawax_inca.SO2})</td>
+                        <td bgcolor="${qhawax_sensor_color.qPM25.color}">${qhawax_sensor_color.qPM25.label}<br>(${qhawax_inca.PM25})</td>
+                        <td bgcolor="${qhawax_sensor_color.qPM10.color}">${qhawax_sensor_color.qPM10.label}<br>(${qhawax_inca.PM10})</td>
                     </tr>
                     <tr>
                         <td >Concentración <br>Tiempo Real</td>
@@ -471,6 +485,7 @@ let content = 'Cargando...';
                 </div>
                   </div>
              ` 
+            };})})
           }
           infoWindow.setContent(content) ; 
           const infograph = document.querySelectorAll('.infowindow-graph')

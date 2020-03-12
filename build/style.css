@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("../src/img/Brand\ Book\ qAIRa-16.svg");
+    background-image: url("img/Brand\ Book\ qAIRa-16.svg");
     background-size: cover;
     display: flex;
     min-height: 100vh;
