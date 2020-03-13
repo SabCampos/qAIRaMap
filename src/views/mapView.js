@@ -18,6 +18,10 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 const  viewQairaMap = (company) => { 
 
     const mapElem = document.createElement('div');
+    const navMenu = document.getElementById('spinNav');
+    const mobMenu = document.getElementById('spinMobile');
+    navMenu.classList.add('spinQaira');
+    mobMenu.classList.add('spinQairaMobile');
 
     const logoutNavMenu = document.querySelector('#logout-nav-menu');
     const dashboardNavMenu = document.querySelector('#dashboard-nav-menu');

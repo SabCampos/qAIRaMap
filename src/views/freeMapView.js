@@ -15,6 +15,38 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 `;
 
 const  viewFreeMap = (company) => {
+    const navMenu = document.getElementById('spinNav');
+    const mobMenu = document.getElementById('spinMobile');
+    console.log(company);
+    
+    switch (company) {
+      case 4:
+        {
+          navMenu.classList.add('spinSanBorja');
+          mobMenu.classList.add('spinSanBorjaMobile');
+        }
+        break;
+    
+        case 8:
+          {
+          navMenu.classList.add('spinMiraflores');
+          mobMenu.classList.add('spinMirafloresMobile');
+          }
+          break;
+    
+          case 3:
+            {
+            navMenu.classList.add('spinLima');
+            mobMenu.classList.add('spinLimaMobile');
+    
+            }
+        
+        break;
+    
+      default:
+        break;
+    }
+    
 
     const mapElem = document.createElement('div');
     const loginNavMenu = document.querySelector('#logout-nav-menu');

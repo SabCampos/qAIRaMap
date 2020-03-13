@@ -53,6 +53,82 @@ main {
     height: 60px;
     right: 0;
 }
+
+/*----------------------------------ANIMATIONS TITLE--------------------------------------------*/
+.spinSanBorja::after {
+    content:"Municipalidad de San Borja";
+    animation: spinSanBorja 12s linear infinite;
+  }
+  .spinSanBorjaMobile::after {
+    content:"Municipalidad de San Borja";
+    animation: spinSanBorja 12s linear infinite;
+  } 
+
+  @keyframes spinSanBorja  {
+    0% { content:"Municipalidad de San Borja"; }
+    25% { content:"Módulos de Vigilancia Calidad Aire"; }
+    50% { content:"Municipalidad de San Borja"; }
+    75% { content: "Módulos de Vigilancia Calidad Aire"; }
+  }
+
+  .spinLima::after {
+    content:"Municipalidad Metropolitana de Lima";
+    animation: spinLima 12s linear infinite;
+  }
+  .spinLimaMobile::after {
+    content:"Municipalidad Metropolitana de Lima";
+    animation: spinLima 12s linear infinite;
+  } 
+
+  @keyframes spinLima  {
+    0% { content:"Municipalidad Metropolitana de Lima"; }
+    25% { content:"Módulos de Vigilancia Calidad Aire"; }
+    50% { content:"Municipalidad Metropolitana de Lima"; }
+    75% { content: "Módulos de Vigilancia Calidad Aire"; }
+  }
+
+  .spinMiraflores::after {
+    content:"Municipalidad de Miraflores";
+    animation: spinMiraflores 12s linear infinite;
+  }
+  .spinMirafloresMobile::after {
+    content:"Municipalidad de Miraflores";
+    animation: spinMiraflores 12s linear infinite;
+  } 
+
+  @keyframes spinMiraflores  {
+    0% { content:"Municipalidad de Miraflores"; }
+    25% { content:"Módulos de Vigilancia Calidad Aire"; }
+    50% { content:"Municipalidad de Miraflores"; }
+    75% { content: "Módulos de Vigilancia Calidad Aire"; }
+  }
+
+  .spinQaira::after {
+    content:"Grupo Qaira SAC";
+    animation: spinQaira 12s linear infinite;
+  }
+  .spinQairaMobile::after {
+    content:"Grupo Qaira SAC";
+    animation: spinQaira 12s linear infinite;
+  } 
+
+  @keyframes spinQaira  {
+    0% { content:"Grupo Qaira SAC"; }
+    25% { content:"Módulos de Vigilancia"; }
+    50% { content:"Know your air, become the change"; }
+    75% { content: "QHAWAX 2020"; }
+  }
+
+  .municipalidad{
+    margin-left: 2em;
+    font-size: 1.2em;
+    margin-right: auto;
+}
+.mobile-menu {
+    color: rgb(88, 77, 77);
+}
+
+/* MEDIA QUERY INFOWINDOW MOBILE -------------------------------------------------------------------*/
 @media only screen and (max-width: 992px){
     table.responsive-table tbody {
         height: 100%;

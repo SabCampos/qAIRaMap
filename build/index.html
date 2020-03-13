@@ -20,6 +20,9 @@
       <div class="navbar-fixed">
         <nav class="transparent" style="padding: 0px 10px">
             <div class="nav-wrapper">
+              <ul class="left hide-on-med-and-down">
+                <li class="municipalidad" id="spinNav"></li>
+              </ul>
               <a href="#" class="brand-logo center">
                 <img id="logo-navbar" src="img/logo-light.png" alt="logo qAIRa" class="responsive-img">
               </a>
@@ -39,6 +42,7 @@
 
     <!-- Mobile menu -->
     <ul id="mobile-nav" class="sidenav">
+      <li class="municipalidad mobile-menu" id="spinMobile"></li>
       <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Leyendas</a></li>
       <li id="dashboard-mobile-menu"></li>
       <li id="logout-mobile-menu"></li>
@@ -66,7 +70,7 @@
 
     <!-- Modal Air INCA Structure -->
     <div id="modalAirInca" class="modal">
-      <a href="#!" class="modal-close right responsive-img modal-images-close">X</a>
+      <span class="modal-close right">X</span>
       <div class="modal-content center">
         <p><a href="http://www.minam.gob.pe/wp-content/uploads/2016/07/RM-N%C2%B0-181-2016-MINAM.pdf">Fuente: Resolución Ministerial N°-181-2016-MINAM.</a></p>
         <img class="responsive-img" src="img/INCA - Calidad del Aire.png" alt="Tabla colores INCA">
@@ -77,7 +81,7 @@
   
   <!-- Modal Ruido ECA Structure -->
   <div id="modalRuidoEca" class="modal">
-      <a href="#!" class="modal-close right responsive-img modal-images-close">X</a>
+    <span class="modal-close right">X</span>
       <div class="modal-content center">
         <p><a href="https://www.oefa.gob.pe/?wpfb_dl=19087">Fuente: Contaminación Sonora OEFA</a></p>
         <img class="responsive-img" src="img/ECA-Ruido.png" alt="Tabla colores ECA-Ruido">
@@ -88,7 +92,7 @@
   
   <!-- Modal UV ECA Structure -->
   <div id="modalUVEca" class="modal">
-      <a href="#!" class="modal-close right responsive-img modal-images-close">X</a>
+    <span class="modal-close right">X</span>
       <div class="modal-content center">
         <p><a href="https://www.inei.gob.pe/media/MenuRecursivo/boletines/01-informe-tecnico-n01_estadisticas-ambientales-dic2018.pdf">Fuente: INEI-Radiación Ultravioleta</a></p>
         <img class="responsive-img" src="img/Indice-UV.png" alt="Tabla colores UV">
