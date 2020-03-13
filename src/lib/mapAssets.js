@@ -428,21 +428,21 @@ let content = 'Cargando...';
                   <h6 class="header">${qhawax.comercial_name}<br><img src="${generateGif(qhawax,company)}" alt="Hoja Calidad aire" class="qairito-img"></h6>
                   <h7 class="header"><strong>${zoneColor.zone}</strong></h7><br>
                   <h7 class="header">${values.time}</h7>
-                  <div class="gas-table">
-                  <table class="responsive-table centered">
+                <div class="gas-table">
+                <table class="responsive-table centered">
                   <thead>
-                  <tr>
-                        <th align="justify"><br>(${res.ID})<br></th>
-                        <th align="justify">${window.innerWidth>768?'Monóxido de Carbono ':''}(CO)</th>
-                        <th align="justify">${window.innerWidth>768?'Dióxido de Nitrógeno ':''}(NO<sub>2</sub>)</th>
-                        <th align="justify">${window.innerWidth>768?'Ozono ':''}(O<sub>3</sub>)</th>
-                        <th align="justify">${window.innerWidth>768?'Sulfuro de Hidrógeno ':''}(H<sub>2</sub>S)</th>
-                        <th align="justify">${window.innerWidth>768?'Dióxido de Azúfre ':''}(SO<sub>2</sub>)</th>
-                        <th align="justify">${window.innerWidth>768?'Material Particulado ':'PM'}(2,5&micro;)</th>
-                        <th align="justify">${window.innerWidth>768?'Material Particulado ':'PM'}(10&micro;)</th>
+                    <tr>
+                        <th><br>(${res.ID})<br></th>
+                        <th>${window.innerWidth>768?'Monóxido de Carbono ':''}(CO)</th>
+                        <th>${window.innerWidth>768?'Dióxido de Nitrógeno ':''}(NO<sub>2</sub>)</th>
+                        <th>${window.innerWidth>768?'Ozono ':''}(O<sub>3</sub>)</th>
+                        <th>${window.innerWidth>768?'Sulfuro de Hidrógeno ':''}(H<sub>2</sub>S)</th>
+                        <th>${window.innerWidth>768?'Dióxido de Azúfre ':''}(SO<sub>2</sub>)</th>
+                        <th>${window.innerWidth>768?'Material Particulado ':'PM'}(2,5&micro;)</th>
+                        <th>${window.innerWidth>768?'Material Particulado ':'PM'}(10&micro;)</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                  </thead>
+                  <tbody >
                     <tr>
                         <td ><strong>INCA</strong> <br>(promedio <br>${qhawax_sensor_color.time})</td>
                         <td bgcolor="${qhawax_sensor_color.qCO.color}">${qhawax_sensor_color.qCO.label}<br>(${qhawax_inca.CO})</td>
@@ -460,37 +460,37 @@ let content = 'Cargando...';
                         <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic" data-infograph="${marker.id}" data-label="${values.O3label}">${values.O3}<br>(ppb)</a></td>
                         <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic" data-infograph="${marker.id}" data-label="${values.H2Slabel}">${values.H2S}<br>(ppb)</a></td>
                         <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic" data-infograph="${marker.id}" data-label="${values.SO2label}">${values.SO2}<br>(ppb)</a></td>
-                        <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic"  data-infograph="${marker.id}" data-label="${values.PM25label}">${values.PM25}<br>(&micro;g/m<sup>3</sup>)</a></td>
+                        <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic" data-infograph="${marker.id}" data-label="${values.PM25label}">${values.PM25}<br>(&micro;g/m<sup>3</sup>)</a></td>
                         <td class="infowindow-graph"><a class="modal-trigger" href="#modalGraphic" data-infograph="${marker.id}" data-label="${values.PM10label}">${values.PM10}<br>(&micro;g/m<sup>3</sup>)</a></td>
                     </tr>
-                    </tbody>
+                  </tbody>
                 </table>
                 </div>
                 <div class="">
                 <table class="responsive-table centered">
-                <thead>
-                <tr>
-                      <th align="justify"></th>
-                      <th align="justify">${window.innerWidth>768?'Ruido ':'Ruido '}(dB)</th>
-                      <th align="justify">${window.innerWidth>768?'Temperatura ':'T '}(°C)</th>
-                      <th align="justify">${window.innerWidth>768?'Ultra Violeta ':'UV '}</th>
-                      <th align="justify">${window.innerWidth>768?'Presión ':'P '}(kPa)</th>
-                      <th align="justify">${window.innerWidth>768?'Humedad ':'H '} (%)</th>
-                  </tr>
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>${window.innerWidth>768?'Ruido ':'Ruido '}(dB)</th>
+                      <th>${window.innerWidth>768?'Temperatura ':'T '}(°C)</th>
+                      <th>${window.innerWidth>768?'Ultra Violeta ':'UV '}</th>
+                      <th>${window.innerWidth>768?'Presión ':'P '}(kPa)</th>
+                      <th>${window.innerWidth>768?'Humedad ':'H '} (%)</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                    <tr>
                       <td><strong>Tiempo<br> Real</strong></td>
                       <td bgcolor="${zoneColor.color}">${values.spl}</td>
                       <td>${values.temperature}</td>
                       <td>${values.UV}</td>
                       <td>${values.pressure}</td>
                       <td>${values.humidity}</td>
-                  </tr>
+                    </tr>
                   </tbody>
-              </table>
+                </table>
                 </div>
-                  </div>
+              </div>
              ` 
             };})})
           }
