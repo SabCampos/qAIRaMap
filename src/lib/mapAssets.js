@@ -158,6 +158,13 @@ const drawChart =(sensor, qhawax_id) =>{
     }
 
 const airQuality = (data) => {
+
+  const addZero = (i) => {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
     
     const PM10 = data.PM10;
     const SO2 = data.SO2;
@@ -169,12 +176,10 @@ const airQuality = (data) => {
     const UV = data.UV;
    
   
-    // const time = moment(data.timestamp).utc().format('LT')
-
+  
     const newDate = new Date(data.timestamp)
     
-    const time = newDate.getHours()+':'+newDate.getMinutes()
- 
+    const time = addZero(newDate.getHours()+5)+':'+addZero(newDate.getMinutes())
   
   
     const qPM10 = (PM10 >= 0 && PM10 <= 50) ? {color:'green', label:'Buena'}
@@ -275,7 +280,7 @@ const  qhawaxLeaf = (inca) => {
 
 const zoneColorNoise = (data) => {
     const newDate = new Date(data.timestamp)
-
+  
     if (7<=newDate.getHours()<=22) {
       switch (data.zone) {
         case 'Zona de Protección Especial':
@@ -350,9 +355,11 @@ const indexValue = (data) => {
 
     const newDate = new Date(data.timestamp)
     
+    
     const time = newDate.getDate()+ ' de ' 
     +months[newDate.getMonth()] + ' de ' 
     + newDate.getFullYear()+ ', '+newDate.getHours()+':'+newDate.getMinutes()
+    
     // const CO2 = (typeof data.CO2 !== 'number' || data.CO2 <= 0) ? '-' : data.CO2.toFixed(2);
     // const NO = (typeof data.NO !== 'number' || data.NO <= 0) ? '-' : data.NO.toFixed(2);
     const PM1 = Number(data.PM1);
@@ -402,7 +409,7 @@ let content = 'Cargando...';
 
              const values = indexValue(res);
              const zoneColor = zoneColorNoise(res);
-
+  
 
              fetch('https://qairamapnapi.qairadrones.com/api/last_gas_inca_data/')
              .then(res =>res.json())
