@@ -62,7 +62,7 @@ const  viewFreeMap = (company) => {
     loginBtn.addEventListener('click', () => {
       sessionStorage.clear();
       loginNavMenu. removeChild(loginBtn);
-      window.location.hash = ``;
+      window.location.hash = `#/login`;
     })
 
     mapElem.innerHTML = viewMap;

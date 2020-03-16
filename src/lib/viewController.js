@@ -19,9 +19,13 @@ export const changeView = (router) => {
     switch (router) {
       case '':
       {
-        return container.appendChild(viewTheLogin());
+        return container.appendChild(viewFreeMap(1));
       }
       case '#/':
+      {
+        return container.appendChild(viewFreeMap(1));
+      }
+      case '#/login':
       {
         return container.appendChild(viewTheLogin());
       }
@@ -37,10 +41,6 @@ export const changeView = (router) => {
       {
         return container.appendChild(viewFreeMap(3));
       }
-      case '#/qairamapFree':
-      {
-        return container.appendChild(viewFreeMap(1));
-      }
       case '#/qairamap':
       {
         return userID(company_id => container.appendChild(viewQairaMap(company_id)));
@@ -51,7 +51,7 @@ export const changeView = (router) => {
       // }
       default:
       {
-        return container.appendChild(viewTheLogin());
+        return container.appendChild(viewFreeMap(1));
       }
     }
 }
