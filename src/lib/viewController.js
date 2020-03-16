@@ -37,6 +37,10 @@ export const changeView = (router) => {
       {
         return container.appendChild(viewFreeMap(3));
       }
+      case '#/qairamapFree':
+      {
+        return container.appendChild(viewFreeMap(1));
+      }
       case '#/qairamap':
       {
         return userID(company_id => container.appendChild(viewQairaMap(company_id)));

@@ -17,8 +17,7 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 const  viewFreeMap = (company) => {
     const navMenu = document.getElementById('spinNav');
     const mobMenu = document.getElementById('spinMobile');
-    console.log(company);
-    
+
     switch (company) {
       case 4:
         {
@@ -40,6 +39,12 @@ const  viewFreeMap = (company) => {
             mobMenu.classList.add('spinLimaMobile');
     
             }
+            case 1:
+              {
+                navMenu.classList.add('spinQaira');
+                mobMenu.classList.add('spinQairaMobile');
+
+              }
         
         break;
     
