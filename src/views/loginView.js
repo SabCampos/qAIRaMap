@@ -58,10 +58,11 @@ const  viewTheLogin = () => {
              const close_tag = loginElem.querySelector('.close-tag');
              close_tag.addEventListener('click',()=>window.location.reload())
                 
-            } else {
-              res.company_id === 1 ?  window.location.hash = `#/qairamap`: window.location.reload();
+            } else  {
+              
+             window.location.hash = '#/login';
+             
             }
-            
 
         })
         

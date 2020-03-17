@@ -50,11 +50,11 @@ const  viewQairaMap = (company) => {
 
     mapElem.innerHTML = viewMap;  
 
-    const modalsGraph= mapElem.querySelectorAll('.modal');
-    M.Modal.init(modalsGraph);
+    // const modalsGraph= mapElem.querySelectorAll('.modal');
+    // M.Modal.init(modalsGraph);
 
-    const modalClose = mapElem.querySelector('#close');
-    modalClose.href=window.location.hash;
+    // const modalClose = mapElem.querySelector('#close');
+    // modalClose.href=window.location.hash;
 
       const map = new google.maps.Map(mapElem.querySelector('#map'), {
             center: mapCenter(company),
@@ -72,7 +72,6 @@ const  viewQairaMap = (company) => {
           })
 
           window.addEventListener('hashchange', () => {
-            sessionStorage.clear();
             logoutNavMenu.removeChild(logoutBtn);
             dashboardBtn.removeChild(dashboardBtn);
           });

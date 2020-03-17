@@ -1,6 +1,7 @@
 import { viewTheLogin } from '../views/loginView.js';
 import { viewQairaMap } from '../views/mapView.js';
 import { viewFreeMap } from '../views/freeMapView.js';
+import { downloadView } from '../views/downloadView.js';
 import { viewDashboard } from '../views/dashboardView.js'
 
 const container = document.getElementById('content-page');
@@ -11,7 +12,7 @@ const user_name = sessionStorage.getItem('companyName');
 const userID = (callback)=>{ 
     if (company_id) {
         callback(company_id);
-      }
+      }     
 }
 
 export const changeView = (router) => {
@@ -44,6 +45,10 @@ export const changeView = (router) => {
       case '#/qairamap':
       {
         return userID(company_id => container.appendChild(viewQairaMap(company_id)));
+      }
+      case '#/download':
+      {
+        return userID(company_id => container.appendChild(downloadView(company_id)));
       }
       // case '#/dashboard':
       // {

@@ -346,6 +346,14 @@ const zoneColorNoise = (data) => {
     }
   }
 
+const uvColor = (uvValue) => {
+  
+  return (uvValue>=0 && uvValue <3) ? {color:'green', label:'Mínimo'}: (uvValue>=3 && uvValue<6)  ? {color:'yellow', label:'Bajo'}:
+    (uvValue>=6 && uvValue <9) ? {color:'orange', label:'Moderado'}: (uvValue>=9 && uvValue<12) ? {color:'red', label:'Alto'}:
+    (uvValue<=12 && uvValue <=14) ? {color:'mediumpurple', label:'Muy Alto'} : {color:'darkmagenta', label:'Extremo'};
+};
+
+
 const indexValue = (data) => {
    
     const lat = data.lat.toFixed(5);  
@@ -353,8 +361,7 @@ const indexValue = (data) => {
     const UV = Number(data.UV.toFixed(1));
     const spl = Number(data.spl.toFixed(1));
 
-    const newDate = new Date(data.timestamp)
-    
+    const newDate = new Date(data.timestamp);
     
     const time = newDate.getDate()+ ' de ' 
     +months[newDate.getMonth()] + ' de ' 
@@ -409,6 +416,7 @@ let content = 'Cargando...';
 
              const values = indexValue(res);
              const zoneColor = zoneColorNoise(res);
+             const colorUV = uvColor(res.UV);
   
 
              fetch('https://qairamapnapi.qairadrones.com/api/last_gas_inca_data/')
@@ -483,7 +491,7 @@ let content = 'Cargando...';
                       <td><strong>Tiempo<br> Real</strong></td>
                       <td bgcolor="${zoneColor.color}">${values.spl}</td>
                       <td>${values.temperature}</td>
-                      <td>${values.UV}</td>
+                      <td bgcolor="${colorUV.color}">${colorUV.label}<br>${values.UV}</td>
                       <td>${values.pressure}</td>
                       <td>${values.humidity}</td>
                     </tr>
