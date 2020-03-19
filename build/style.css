@@ -117,7 +117,7 @@ main {
   0% { content:"Grupo Qaira SAC"; }
   25% { content:"Módulos de Vigilancia"; }
   50% { content:"Know your air, become the change"; }
-  75% { content: "QHAWAX 2020"; }
+  75% { content: "qHAWAX 2020"; }
 }
 
 .municipalidad{
@@ -130,14 +130,22 @@ main {
 }
 
 /*--------------DATE PICKER------------------------------------------------------------------*/
+.datepicker { border-bottom: 1px solid black;}
 .datepicker-date-display { background-image: var(--blue-background) ; }
 .confirmation-btns {color: var(--blue);}
-/* .picker-day.datepicker-day-button{ color: red; }
-.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected { background-color: #6d4e7a;}
-.clockpicker-tick:hover { background: #6d4e7a !important; }
-.clockpicker-canvas line { stroke: #6d4e7a !important; }
-.clockpicker-canvas-bearing { fill: #6d4e7a !important; }
-.clockpicker-canvas-bg { fill: #6d4e7a !important; } */
+label {
+  font-size: 1rem;
+  color: black;
+}
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  border-bottom: 1px solid black;;
+}
+.card-pannel{padding-top: 1.5em; padding-bottom: 1.5em; border-radius: 10px;}
+
+/*--------------TIME PICKER------------------------------------------------------------------*/
+
+.timepicker-digital-display{ background-image: var(--blue-background) ; }
+.timepicker-canvas-bg { fill:var(--blue);}
 
 /* MEDIA QUERY INFOWINDOW MOBILE -------------------------------------------------------------------*/
 @media only screen and (max-width: 992px){

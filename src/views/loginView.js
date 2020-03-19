@@ -38,14 +38,16 @@ const  viewTheLogin = () => {
     const loginElem = document.createElement('div');
     loginElem.innerHTML = viewLogin;
 
-    const loginBtn = loginElem.querySelector('#submit-btn')
+    const loginBtn = loginElem.querySelector('#submit-btn');
+    const legend= document.getElementById('legend-menu');
+    legend.classList.add('hide');
+    
     loginBtn.addEventListener('click', (e)=>{
         e.preventDefault()
 
         const password = window.btoa(loginElem.querySelector('#password').value);
         const email = window.btoa(loginElem.querySelector('#email').value);
-        
-        
+
         fetch(`https://qairamapnapi.qairadrones.com/api/login/?email=${email}&password=${password}`)
         .then(res =>res.json())
         .then(res => {
@@ -60,7 +62,7 @@ const  viewTheLogin = () => {
                 
             } else  {
               
-             window.location.hash = '#/login';
+             window.location.hash = '#/download';
              
             }
 
