@@ -25,7 +25,7 @@ const modalEmptyAlert = `
   </div>
 </div>
 `;
-const optionsModal = {onCloseEnd:()=>window.location.reload()};
+const optionsModal = {onCloseEnd:()=>window.location.reload(), outDuration:800};
 
 const openModalDateAlert = () => {
     const container = document.getElementById('content-page');
@@ -53,7 +53,7 @@ const openModalEmptyAlert = () => {
 
 const toTimestamp = (arrayDate, arrayHour) => {
 
-  const timestamp = new Date(arrayDate[2],arrayDate[1]-1,arrayDate[0],arrayHour[0],arrayHour[1])
+  const timestamp = new Date(arrayDate[2],arrayDate[1]-1,arrayDate[0],arrayHour[0]-5,arrayHour[1])
   
   return timestamp;
 

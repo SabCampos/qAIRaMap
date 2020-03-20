@@ -39,8 +39,11 @@ const  viewTheLogin = () => {
     loginElem.innerHTML = viewLogin;
 
     const loginBtn = loginElem.querySelector('#submit-btn');
-    const legend= document.getElementById('legend-menu');
-    legend.classList.add('hide');
+    const legendMenu= document.getElementById('legend-menu');
+    legendMenu.classList.add('hide');
+
+    const legendMobile = document.getElementById('legend-menu-mobile');
+    legendMobile.classList.add('hide');
     
     loginBtn.addEventListener('click', (e)=>{
         e.preventDefault()
@@ -62,7 +65,8 @@ const  viewTheLogin = () => {
                 
             } else  {
               
-             window.location.hash = '#/download';
+              window.location.replace('..#/download');
+              window.location.reload();
              
             }
 

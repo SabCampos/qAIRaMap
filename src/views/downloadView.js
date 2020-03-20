@@ -2,8 +2,8 @@ import { openModalDateAlert, openModalEmptyAlert, toTimestamp} from '../lib/pick
 import { json2csv , download } from '../lib/fromJsonToCsv.js';
 
 const csvFields = [
-  'CO','CO2','H2S','NO','NO2','O3','PM1','PM10','PM25','SO2','SPL','UV','UVA','UVB','VOC','alt',
-  'humidity','lat','lon','pressure','temperature','day','timestamp'
+  'CO (ppb)','H2S (ppb)','NO2 (ppb)','O3 (ppb)','PM10 (μg/m3)','PM25 (μg/m3)','SO2 (ppb)','SPL (dB)','UV','UVA','UVB',
+  'humidity (%)','lat','lon','pressure (Pa)','temperature (°C)','day','timestamp'
 ]
 const viewDownload = `
 <div class="row">
@@ -54,6 +54,12 @@ const viewDownload = `
     </div>
 `;
 
+const waitingLoader = `
+<div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+`
+
 const optionsDatePicker ={
   format:'dd/mm/yyyy',
   i18n: {
@@ -82,11 +88,45 @@ const optionsTimePicker ={
 
 
 const downloadView = (company) => {
-    
 
-    M.toast({html: 'Primero selecciona un Módulo!'})
+    M.toast({html: '¡Primero selecciona un Módulo!'})
+    M.toast({html: 'Por favor ingresa todos los campos'})
     const leyenda = document.getElementById('legend-menu')
     leyenda.classList.add('hide');
+    
+    const logoutNavMenu = document.querySelector('#log-menu');
+    const logoutBtn = document.createElement('a');
+    logoutBtn.innerText = 'Salir';
+    logoutNavMenu.appendChild(logoutBtn);
+
+    const logoutMobMenu = document.querySelector('#log-menu-mobile');
+    const logoutMobBtn = document.createElement('a');
+    logoutMobBtn.innerText = 'Salir';
+    logoutMobMenu.appendChild(logoutMobBtn);
+
+    logoutBtn.addEventListener('click', () => {
+      switch (company) {
+        case 1: { window.location.replace(''); window.location.reload();} break;
+        case 3: { window.location.replace('#/mml'); window.location.reload();} break;
+        case 4: { window.location.replace('#/msb'); window.location.reload();} break;
+        case 8: { window.location.replace('#/mmi'); window.location.reload();} break;
+        default: { window.location.replace('#/login'); window.location.reload();} break;
+      }
+      logoutNavMenu.removeChild(logoutBtn);
+      sessionStorage.clear();
+    })
+
+    logoutMobBtn.addEventListener('click', () => {
+      switch (company) {
+        case 1: { window.location.replace(''); window.location.reload();} break;
+        case 3: { window.location.replace('#/mml'); window.location.reload();} break;
+        case 4: { window.location.replace('#/msb'); window.location.reload();} break;
+        case 8: { window.location.replace('#/mmi'); window.location.reload();} break;
+        default: { window.location.replace('#/login'); window.location.reload();} break;
+      }
+      logoutMobMenu.removeChild(logoutMobBtn);
+      sessionStorage.clear();
+    })
     
     const downloadElem = document.createElement('div');
     downloadElem.innerHTML = viewDownload;
@@ -141,13 +181,14 @@ const downloadView = (company) => {
     
     }
     const downloadBtn = downloadElem.querySelector('#submit-btn');
-    downloadBtn.addEventListener('click',(e)=>{
-        e.preventDefault();
-  
+    downloadBtn.addEventListener('click',()=>{
+
         const arrayInitDate = typeof selectedParameters.initDate==='undefined'? false: selectedParameters.initDate.split("/");
         const arrayEndDate = typeof selectedParameters.endDate==='undefined'? false: selectedParameters.endDate.split("/");
-        const arrayInitTime =  selectedParameters.initHour==='' ?false : selectedParameters.initHour.split(":");
-        const arrayEndTime =  selectedParameters.endHour==='' ? false : selectedParameters.endHour.split(":");
+        const arrayInitTime = typeof selectedParameters.initHour==='undefined' ||
+        selectedParameters.initHour===''?false : selectedParameters.initHour.split(":");
+        const arrayEndTime = typeof selectedParameters.endHour==='undefined' || 
+        selectedParameters.endHour===''? false : selectedParameters.endHour.split(":");
         
         const initial_timestamp= toTimestamp(arrayInitDate, arrayInitTime).toUTCString();
         const final_timestamp=toTimestamp(arrayEndDate,arrayEndTime).toUTCString();   
@@ -160,8 +201,9 @@ const downloadView = (company) => {
         if (Date.parse(initial_timestamp)>=Date.parse(final_timestamp)) {
           openModalDateAlert();
 
-      } else {
-        const request = async () => {
+          } else {
+          const request = async () => {
+
           const response = await fetch(`https://qairamapnapi.qairadrones.com/api/valid_processed_measurements_period/?qhawax_id=${selectedParameters.id}&company_id=${selectedParameters.company}&initial_timestamp=${initial_timestamp}&final_timestamp=${final_timestamp}`);
           const json = await response.json();
           
@@ -169,9 +211,13 @@ const downloadView = (company) => {
           download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
           window.location.reload()
           }
+
         request()
-        M.toast({html: 'La descarga puede demorar unos 5 minutos...',displayLength:6000})
-        M.toast({html: 'Estamos preparando la data!',displayLength:6000})
+        M.toast({html: 'La descarga puede demorar unos 5 minutos...',displayLength:10000})
+        M.toast({html: '¡Estamos preparando la data!',displayLength:6000})
+
+        const pannel = document.querySelector('.card-pannel');
+        pannel.innerHTML=waitingLoader;
 
       }
         

@@ -9,54 +9,36 @@ const company_id = Number(sessionStorage.getItem('companyID'));
 const user_name = sessionStorage.getItem('companyName');
 
 
-const userID = (callback)=>{ 
-    if (company_id) {
-        callback(company_id);
-      }     
-}
-
+// const userID = (callback)=>{ 
+//     if (company_id) {
+//         callback(company_id);
+//       }     
+// }
 export const changeView = (router) => {
+
     container.innerHTML='';  
     switch (router) {
-      case '':
-      {
-        return container.appendChild(viewFreeMap(1));
-      }
-      case '#/':
-      {
-        return container.appendChild(viewFreeMap(1));
-      }
-      case '#/login':
-      {
-        return container.appendChild(viewTheLogin());
-      }
-      case '#/msb':
-      {
-        return container.appendChild(viewFreeMap(4));
-      }
-      case '#/mmi':
-      {
-        return container.appendChild(viewFreeMap(8));
-      }
-      case '#/mml':
-      {
-        return container.appendChild(viewFreeMap(3));
-      }
-      case '#/qairamap':
-      {
-        return userID(company_id => container.appendChild(viewQairaMap(company_id)));
-      }
-      case '#/download':
-      {
-        return userID(company_id => container.appendChild(downloadView(company_id)));
-      }
+      case '': return container.appendChild(viewFreeMap(1));
+
+      case '#/': return container.appendChild(viewFreeMap(1));
+
+      case '#/login': return container.appendChild(viewTheLogin());
+
+      case '#/msb': return container.appendChild(viewFreeMap(4));
+
+      case '#/mmi': return container.appendChild(viewFreeMap(8));
+
+      case '#/mml': return container.appendChild(viewFreeMap(3));
+
+      case '#/qairamap': return company_id===1?container.appendChild(viewQairaMap(company_id)):container.appendChild(viewTheLogin());
+
+      case '#/download': return container.appendChild(downloadView(company_id));
+
       // case '#/dashboard':
       // {
       //   return userID(company_id => container.appendChild(viewDashboard(Number(company_id))));
       // }
-      default:
-      {
-        return container.appendChild(viewFreeMap(1));
-      }
+      default: return container.appendChild(viewTheLogin());
+
     }
 }

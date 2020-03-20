@@ -128,7 +128,12 @@ main {
 .mobile-menu {
   color: rgb(88, 77, 77);
 }
-
+.progress{
+  height: 1em !important;
+}
+.progress .indeterminate {
+  background-color: var(--blue) !important;
+}
 /*--------------DATE PICKER------------------------------------------------------------------*/
 .datepicker { border-bottom: 1px solid black;}
 .datepicker-date-display { background-image: var(--blue-background) ; }

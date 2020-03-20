@@ -24,10 +24,11 @@ if ('serviceWorker' in navigator) {
         const chipAlert= document.querySelectorAll('.chip');
         M.Chips.getInstance(chipAlert);
 
-        changeView(window.location.hash);
-        window.addEventListener('hashchange', () => {
-          changeView(window.location.hash);
-        });
+        // changeView(window.location.hash);
+        // window.addEventListener('hashchange', () => {
+        //   changeView(window.location.hash);
+        // });
+        window.onhashchange=changeView(window.location.hash);
      
     };
 

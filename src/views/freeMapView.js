@@ -14,9 +14,15 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 </div>
 `;
 
+
+
 const  viewFreeMap = (company) => {
+
     const navMenu = document.getElementById('spinNav');
     const mobMenu = document.getElementById('spinMobile');
+    navMenu.classList.remove('spinSanBorja','spinMiraflores','spinLima','spinQaira');
+    mobMenu.classList.remove('spinSanBorjaMobile','spinMirafloresMobile','spinLimaMobile','spinQairaMobile')
+
 
     switch (company) {
       case 4:
@@ -39,6 +45,7 @@ const  viewFreeMap = (company) => {
             mobMenu.classList.add('spinLimaMobile');
     
             }
+            break;
             case 1:
               {
                 navMenu.classList.add('spinQaira');
@@ -54,15 +61,28 @@ const  viewFreeMap = (company) => {
     
 
     const mapElem = document.createElement('div');
-    const loginNavMenu = document.querySelector('#logout-nav-menu');
+    const loginNavMenu = document.querySelector('#log-menu');
     const loginBtn = document.createElement('a');
     loginBtn.innerText = 'Login';
     loginNavMenu.appendChild(loginBtn);
 
+    const loginMobMenu = document.querySelector('#log-menu-mobile');
+    const loginMobBtn = document.createElement('a');
+    loginMobBtn.innerText = 'Login';
+    loginMobMenu.appendChild(loginMobBtn);
+
     loginBtn.addEventListener('click', () => {
+      window.location.replace('..#/login');
+      window.location.reload();
       sessionStorage.clear();
-      loginNavMenu. removeChild(loginBtn);
-      window.location.hash = `#/login`;
+      loginNavMenu.removeChild(loginBtn);
+    });
+    
+    loginMobBtn.addEventListener('click', () => {
+      window.location.replace('..#/login');
+      window.location.reload();
+      sessionStorage.clear();
+      loginMobMenu.removeChild(loginMobBtn);
     })
 
     mapElem.innerHTML = viewMap;
@@ -85,7 +105,6 @@ const  viewFreeMap = (company) => {
            });
             
           })
-          
     
    return mapElem;
 }

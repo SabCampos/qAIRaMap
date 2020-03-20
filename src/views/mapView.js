@@ -23,9 +23,9 @@ const  viewQairaMap = (company) => {
     navMenu.classList.add('spinQaira');
     mobMenu.classList.add('spinQairaMobile');
 
-    const logoutNavMenu = document.querySelector('#logout-nav-menu');
+    const logoutNavMenu = document.querySelector('#log-menu');
     const dashboardNavMenu = document.querySelector('#dashboard-nav-menu');
-    // const logoutMobileMenu = document.querySelector('#logout-mobile-menu');
+    // const logoutMobileMenu = document.querySelector('#log-menu-mobile');
     // const dashboardMobileMenu = document.querySelector('#dashboard-mobile-menu');
 
     const logoutBtn = document.createElement('a');
