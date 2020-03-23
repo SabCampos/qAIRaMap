@@ -1,5 +1,6 @@
 import { openModalDateAlert, openModalEmptyAlert, toTimestamp} from '../lib/pickerErrors.js';
 import { json2csv , download } from '../lib/fromJsonToCsv.js';
+import { createLogout, createLogoutMobile, removeLogout, removeLogoutMobile, logout } from '../lib/buttons.js';
 
 const csvFields = [
   'CO (ppb)','H2S (ppb)','NO2 (ppb)','O3 (ppb)','PM10 (μg/m3)','PM25 (μg/m3)','SO2 (ppb)','SPL (dB)','UV','UVA','UVB',
@@ -87,45 +88,30 @@ const optionsTimePicker ={
 }
 
 
+
+
 const downloadView = (company) => {
+
+
 
     M.toast({html: '¡Primero selecciona un Módulo!'})
     M.toast({html: 'Por favor ingresa todos los campos'})
     const leyenda = document.getElementById('legend-menu')
     leyenda.classList.add('hide');
-    
-    const logoutNavMenu = document.querySelector('#log-menu');
-    const logoutBtn = document.createElement('a');
-    logoutBtn.innerText = 'Salir';
-    logoutNavMenu.appendChild(logoutBtn);
 
-    const logoutMobMenu = document.querySelector('#log-menu-mobile');
-    const logoutMobBtn = document.createElement('a');
-    logoutMobBtn.innerText = 'Salir';
-    logoutMobMenu.appendChild(logoutMobBtn);
+    
+    const logoutBtn = createLogout();
+    const logoutMobBtn = createLogoutMobile();
+
 
     logoutBtn.addEventListener('click', () => {
-      switch (company) {
-        case 1: { window.location.replace(''); window.location.reload();} break;
-        case 3: { window.location.replace('#/mml'); window.location.reload();} break;
-        case 4: { window.location.replace('#/msb'); window.location.reload();} break;
-        case 8: { window.location.replace('#/mmi'); window.location.reload();} break;
-        default: { window.location.replace('#/login'); window.location.reload();} break;
-      }
-      logoutNavMenu.removeChild(logoutBtn);
-      sessionStorage.clear();
+      logout(company);
+      removeLogout();
     })
 
     logoutMobBtn.addEventListener('click', () => {
-      switch (company) {
-        case 1: { window.location.replace(''); window.location.reload();} break;
-        case 3: { window.location.replace('#/mml'); window.location.reload();} break;
-        case 4: { window.location.replace('#/msb'); window.location.reload();} break;
-        case 8: { window.location.replace('#/mmi'); window.location.reload();} break;
-        default: { window.location.replace('#/login'); window.location.reload();} break;
-      }
-      logoutMobMenu.removeChild(logoutMobBtn);
-      sessionStorage.clear();
+      logout(company);
+      removeLogoutMobile();
     })
     
     const downloadElem = document.createElement('div');
@@ -134,7 +120,8 @@ const downloadView = (company) => {
     const selection = downloadElem.querySelectorAll('select');
     M.FormSelect.init(selection);
 
-
+    //AGRAGAR SWITCH PARA CAMBIAR FETCH
+    let filename='';
 
     fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
     .then(res =>res.json())
@@ -145,6 +132,9 @@ const downloadView = (company) => {
             const option = document.createElement('option')
             option.setAttribute('value', qhawax.qhawax_id);
             option.innerText = qhawax.qhawax_name +': '+ qhawax.comercial_name;
+
+            filename =qhawax.qhawax_name +': '+ qhawax.comercial_name;
+
             addOptions.appendChild(option)
 
         });
@@ -208,7 +198,7 @@ const downloadView = (company) => {
           const json = await response.json();
           
           const csvContent = json2csv(json,csvFields)
-          download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
+          download(csvContent,`${filename}.csv`, 'text/csv;encoding:utf-8');
           window.location.reload()
           }
 

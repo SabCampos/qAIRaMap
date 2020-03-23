@@ -1,4 +1,6 @@
 import { drawQhawaxMap, mapCenter } from '../lib/mapAssets.js';
+import { createLogout, removeLogout, createDashboard, chooseSpinnerMenu,
+ logout, createDwnld, createDwnldMob } from '../lib/buttons.js';
 
 const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 <div class="animated fadeInDown" id="map"></div>
@@ -18,43 +20,36 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 const  viewQairaMap = (company) => { 
 
     const mapElem = document.createElement('div');
-    const navMenu = document.getElementById('spinNav');
-    const mobMenu = document.getElementById('spinMobile');
-    navMenu.classList.add('spinQaira');
-    mobMenu.classList.add('spinQairaMobile');
 
-    const logoutNavMenu = document.querySelector('#log-menu');
-    const dashboardNavMenu = document.querySelector('#dashboard-nav-menu');
-    // const logoutMobileMenu = document.querySelector('#log-menu-mobile');
-    // const dashboardMobileMenu = document.querySelector('#dashboard-mobile-menu');
+    chooseSpinnerMenu(company)
 
-    const logoutBtn = document.createElement('a');
-    const dashboardBtn = document.createElement('a');
+    const logoutBtn = createLogout();
+    const dashboardBtn = createDashboard();
 
-    logoutBtn.innerText = 'Salir';
-    logoutNavMenu.appendChild(logoutBtn);
-
-    dashboardBtn.innerText = 'Dashboard';
-    dashboardNavMenu.appendChild(dashboardBtn);
-
-
+    const downloadBtn = createDwnld();
+    const downLoadMobBtn = createDwnldMob();
+    
     logoutBtn.addEventListener('click', () => {
-      sessionStorage.clear();
-      logoutNavMenu.removeChild(logoutBtn);
-      window.location.hash = ``;
+      logout();
+      removeLogout();
     })
 
     dashboardBtn.addEventListener('click', () => {
-      window.location.hash = "#/dashboard";
+      window.location.replace('..#/dashboard');
+      window.location.reload();
+    })
+
+    downloadBtn.addEventListener('click', () => {
+      window.location.replace('..#/download');
+      window.location.reload();
+    })
+
+    downLoadMobBtn.addEventListener('click', () => {
+      window.location.replace('..#/download');
+      window.location.reload();
     })
 
     mapElem.innerHTML = viewMap;  
-
-    // const modalsGraph= mapElem.querySelectorAll('.modal');
-    // M.Modal.init(modalsGraph);
-
-    // const modalClose = mapElem.querySelector('#close');
-    // modalClose.href=window.location.hash;
 
       const map = new google.maps.Map(mapElem.querySelector('#map'), {
             center: mapCenter(company),
@@ -71,10 +66,6 @@ const  viewQairaMap = (company) => {
             });
           })
 
-          window.addEventListener('hashchange', () => {
-            logoutNavMenu.removeChild(logoutBtn);
-            dashboardBtn.removeChild(dashboardBtn);
-          });
    return mapElem;
 }
 

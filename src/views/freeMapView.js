@@ -1,4 +1,6 @@
-import { drawQhawaxMap, mapCenter } from '../lib/mapAssets.js'
+import { drawQhawaxMap, mapCenter} from '../lib/mapAssets.js';
+import { chooseSpinnerMenu, createLogin, createLoginMobile, login,
+  removeLogin, removeLoginMobile } from '../lib/buttons.js';
 
 const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 <div class="animated fadeInDown" id="map"></div>
@@ -18,71 +20,22 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 
 const  viewFreeMap = (company) => {
 
-    const navMenu = document.getElementById('spinNav');
-    const mobMenu = document.getElementById('spinMobile');
-    navMenu.classList.remove('spinSanBorja','spinMiraflores','spinLima','spinQaira');
-    mobMenu.classList.remove('spinSanBorjaMobile','spinMirafloresMobile','spinLimaMobile','spinQairaMobile')
+  const mapElem = document.createElement('div');
 
-
-    switch (company) {
-      case 4:
-        {
-          navMenu.classList.add('spinSanBorja');
-          mobMenu.classList.add('spinSanBorjaMobile');
-        }
-        break;
+  chooseSpinnerMenu (company);
     
-        case 8:
-          {
-          navMenu.classList.add('spinMiraflores');
-          mobMenu.classList.add('spinMirafloresMobile');
-          }
-          break;
-    
-          case 3:
-            {
-            navMenu.classList.add('spinLima');
-            mobMenu.classList.add('spinLimaMobile');
-    
-            }
-            break;
-            case 1:
-              {
-                navMenu.classList.add('spinQaira');
-                mobMenu.classList.add('spinQairaMobile');
-
-              }
-        
-        break;
-    
-      default:
-        break;
-    }
-    
-
-    const mapElem = document.createElement('div');
-    const loginNavMenu = document.querySelector('#log-menu');
-    const loginBtn = document.createElement('a');
-    loginBtn.innerText = 'Login';
-    loginNavMenu.appendChild(loginBtn);
-
-    const loginMobMenu = document.querySelector('#log-menu-mobile');
-    const loginMobBtn = document.createElement('a');
-    loginMobBtn.innerText = 'Login';
-    loginMobMenu.appendChild(loginMobBtn);
+  const loginBtn = createLogin();
+  const loginMobBtn = createLoginMobile(); 
+  
 
     loginBtn.addEventListener('click', () => {
-      window.location.replace('..#/login');
-      window.location.reload();
-      sessionStorage.clear();
-      loginNavMenu.removeChild(loginBtn);
+      login()
+      removeLogin()
     });
     
     loginMobBtn.addEventListener('click', () => {
-      window.location.replace('..#/login');
-      window.location.reload();
-      sessionStorage.clear();
-      loginMobMenu.removeChild(loginMobBtn);
+      login ()
+      removeLoginMobile()
     })
 
     mapElem.innerHTML = viewMap;

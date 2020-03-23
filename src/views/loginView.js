@@ -56,23 +56,25 @@ const  viewTheLogin = () => {
         .then(res => {
             sessionStorage.setItem('companyID', res.company_id)
             sessionStorage.setItem('companyName', res.company_name)
-            
+
             if (res === 'User and password not valid') {
-             const card_alert = loginElem.querySelector('.chip');
-             card_alert.classList.remove('hide')
-             const close_tag = loginElem.querySelector('.close-tag');
-             close_tag.addEventListener('click',()=>window.location.reload())
-                
-            } else  {
+              const card_alert = loginElem.querySelector('.chip');
+              card_alert.classList.remove('hide')
+              const close_tag = loginElem.querySelector('.close-tag');
+              close_tag.addEventListener('click',()=>window.location.reload())
+                 
+             }else if (res.company_id===1) {
+
+              window.location.replace('..#/qairamap');
+              window.location.reload();
+               
+             }else  {
               
               window.location.replace('..#/download');
               window.location.reload();
-             
-            }
 
+            }
         })
-        
-        
     })
     return loginElem;
 }

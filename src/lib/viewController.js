@@ -34,6 +34,8 @@ export const changeView = (router) => {
 
       case '#/download': return container.appendChild(downloadView(company_id));
 
+      case '#/dashboard': return company_id===1?container.appendChild(viewDashboard(company_id)):container.appendChild(viewTheLogin());
+
       // case '#/dashboard':
       // {
       //   return userID(company_id => container.appendChild(viewDashboard(Number(company_id))));
