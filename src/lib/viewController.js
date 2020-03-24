@@ -18,9 +18,9 @@ export const changeView = (router) => {
 
     container.innerHTML='';  
     switch (router) {
-      case '': return container.appendChild(viewFreeMap(1));
+      case '': return container.appendChild(viewFreeMap(0));
 
-      case '#/': return container.appendChild(viewFreeMap(1));
+      case '#/': return container.appendChild(viewFreeMap(0));
 
       case '#/login': return container.appendChild(viewTheLogin());
 

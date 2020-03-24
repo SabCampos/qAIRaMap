@@ -405,6 +405,8 @@ const indexValue = (data) => {
   }
 
 const setQhawaxInfowindow = (map,marker,infoWindow,qhawax,company) => {
+  console.log('setQhawaxInfowindow', company);
+  
 let content = 'Cargando...';
     if (qhawax.main_inca===null) {
       content = 'En Mantenimiento.';  
@@ -528,7 +530,7 @@ let content = 'Cargando...';
 
 
 const drawQhawaxMap = (map,qhawax,company) => {
-
+  
     const previous_marker_index = map.markers.findIndex(marker => marker.id === qhawax.qhawax_name);
 
   if (previous_marker_index != -1) {

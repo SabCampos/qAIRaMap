@@ -14,6 +14,7 @@ const viewDownload = `
                 <h5 class="center-align">Descarga la data de medición de calidad del aire</h5>
                 <div class="row">
                     <div class="input-field col s6 offset-s3">
+
                         <select class="browser-default center-align" name="" id="selectQhawax">
                         <option value="" disabled selected> Selecciona un qHAWAX</option>
                         </select>
@@ -120,9 +121,10 @@ const downloadView = (company) => {
     const selection = downloadElem.querySelectorAll('select');
     M.FormSelect.init(selection);
 
-    //AGRAGAR SWITCH PARA CAMBIAR FETCH
-    let filename='';
+    const switchData = downloadElem.querySelector('#switch-valid');
+    // console.log(switchData, switchData.checked);
 
+    let array_qhawax = []
     fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
     .then(res =>res.json())
     .then(qhawax_list => {
@@ -132,9 +134,7 @@ const downloadView = (company) => {
             const option = document.createElement('option')
             option.setAttribute('value', qhawax.qhawax_id);
             option.innerText = qhawax.qhawax_name +': '+ qhawax.comercial_name;
-
-            filename =qhawax.qhawax_name +': '+ qhawax.comercial_name;
-
+            array_qhawax.push(qhawax);
             addOptions.appendChild(option)
 
         });
@@ -193,10 +193,14 @@ const downloadView = (company) => {
 
           } else {
           const request = async () => {
-
+            let filename = '';
           const response = await fetch(`https://qairamapnapi.qairadrones.com/api/valid_processed_measurements_period/?qhawax_id=${selectedParameters.id}&company_id=${selectedParameters.company}&initial_timestamp=${initial_timestamp}&final_timestamp=${final_timestamp}`);
           const json = await response.json();
-          
+          array_qhawax.forEach(qhawax =>{
+            filename += Number(selectedParameters.id)===Number(qhawax.qhawax_id)?
+             `${qhawax.qhawax_name}`+'-'+`${qhawax.comercial_name}`:'';
+          })
+
           const csvContent = json2csv(json,csvFields)
           download(csvContent,`${filename}.csv`, 'text/csv;encoding:utf-8');
           window.location.reload()

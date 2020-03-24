@@ -141,6 +141,26 @@ main {
 .progress .indeterminate {
   background-color: var(--blue) !important;
 }
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: var(--white-alpha);
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #26a69a;
+}
+
+.switch label .lever{
+  background-color: var(--white-alpha);
+}
+.switch label .lever:after{
+  background-color: #26a69a;
+}
+
+
+
+
+
 /*--------------DATE PICKER------------------------------------------------------------------*/
 .datepicker { border-bottom: 1px solid black;}
 .datepicker-date-display { background-image: var(--blue-background) ; }

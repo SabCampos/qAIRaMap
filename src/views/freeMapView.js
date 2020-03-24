@@ -19,10 +19,11 @@ const viewMap = `   <div class="wrapper_map" id="wrapper_map">
 
 
 const  viewFreeMap = (company) => {
+  
 
   const mapElem = document.createElement('div');
 
-  chooseSpinnerMenu (company);
+  chooseSpinnerMenu (company = company === 0 ? 1: company);
     
   const loginBtn = createLogin();
   const loginMobBtn = createLoginMobile(); 
@@ -49,11 +50,12 @@ const  viewFreeMap = (company) => {
             zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           });
-     map.markers = [];      
+    map.markers = [];      
           fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
           .then(res =>res.json())
           .then(qhawax_list => {
            qhawax_list.forEach(qhawax => {
+            
                drawQhawaxMap(map,qhawax,company);
            });
             
