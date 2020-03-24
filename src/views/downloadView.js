@@ -14,7 +14,14 @@ const viewDownload = `
                 <h5 class="center-align">Descarga la data de medición de calidad del aire</h5>
                 <div class="row">
                     <div class="input-field col s6 offset-s3">
-
+                                    <div id="switch-valid" class="switch center-align">
+                                      <label>
+                                        Completa
+                                        <input type="checkbox" checked="checked">
+                                        <span class="lever"></span>
+                                        Promedios
+                                      </label>
+                                    </div><br>
                         <select class="browser-default center-align" name="" id="selectQhawax">
                         <option value="" disabled selected> Selecciona un qHAWAX</option>
                         </select>
@@ -122,7 +129,13 @@ const downloadView = (company) => {
     M.FormSelect.init(selection);
 
     const switchData = downloadElem.querySelector('#switch-valid');
-    // console.log(switchData, switchData.checked);
+    console.log(switchData)
+    switchData.addEventListener('change', (e) =>{
+      console.log(e);
+      console.log(switchData);
+      
+      
+    })
 
     let array_qhawax = []
     fetch(`https://qairamapnapi.qairadrones.com/api/AllQhawaxByCompany/?company_id=${company}`)
